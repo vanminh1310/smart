@@ -11,6 +11,9 @@
 int rd = 5;
 int gr = 4;
 int yl = 0;
+int a = 0;
+int b= 0;
+int c= 0;
 
 void setup() {
   Serial.begin(9600);
@@ -49,24 +52,24 @@ void yello() {
 void loop() {
   Serial.print("\n Den do \n");
   red();
-  for (int i = 15; i >=0; i--) {
-    Serial.println(i);
-    Firebase.setFloat("Đèn đỏ", i); // gui thay the khong tao chuoi random
+  for ( int a=Firebase.getInt("a"); a >=0; a--) {
+    Serial.println(a);
+    Firebase.setFloat("Đèn đỏ", a); // gui thay the khong tao chuoi random
     delay(1000);
   }
   Serial.print("\n Den xanh \n");
   green();
-  for (int i = 10; i >=0; i--) {
-    Serial.println(i);
-    Firebase.setFloat("Đèn xanh", i); // gui thay the khong tao chuoi random
+  for (int b= Firebase.getInt("b") ; b >=0; b--) {
+    Serial.println(b);
+    Firebase.setFloat("Đèn xanh", b); // gui thay the khong tao chuoi random
     delay(1000);
   }
   
   Serial.print("\n Den vang\n ");
   yello();
-  for (int i = 5; i >=0; i--) {
-    Serial.println(i);
-    Firebase.setFloat("Đèn vàng", i); // gui thay the khong tao chuoi random
+  for (int c =Firebase.getInt("c") ; c >=0; c--) {
+    Serial.println(c);
+    Firebase.setFloat("Đèn vàng", c); // gui thay the khong tao chuoi random
     delay(1000);
   }
 
