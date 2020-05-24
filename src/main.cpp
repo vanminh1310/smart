@@ -14,7 +14,7 @@ int yl = 0;
 int a = 0;
 int b= 0;
 int c= 0;
-
+int d;
 void setup() {
   Serial.begin(9600);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -50,6 +50,7 @@ void yello() {
 }
 
 void loop() {
+  if(Firebase.getInt("d")==1 ){
   Serial.print("\n Den do \n");
   red();
   for ( int a=Firebase.getInt("a"); a >=0; a--) {
@@ -72,7 +73,31 @@ void loop() {
     Firebase.setFloat("Đèn vàng", c); // gui thay the khong tao chuoi random
     delay(1000);
   }
-
-
+}
+else
+{
+  Serial.print("\n Den do \n");
+  red();
+  for ( int a= 30; a >=0; a--) {
+    Serial.println(a);
+    Firebase.setFloat("Đèn đỏ", a); // gui thay the khong tao chuoi random
+    delay(1000);
+  }
+  Serial.print("\n Den xanh \n");
+  green();
+  for (int b= 30; b >=0; b--) {
+    Serial.println(b);
+    Firebase.setFloat("Đèn xanh", b); // gui thay the khong tao chuoi random
+    delay(1000);
+  }
+  
+  Serial.print("\n Den vang\n ");
+  yello();
+  for (int c =10 ; c >=0; c--) {
+    Serial.println(c);
+    Firebase.setFloat("Đèn vàng", c); // gui thay the khong tao chuoi random
+    delay(1000);
+  }
+}
 
 }
